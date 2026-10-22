@@ -53,7 +53,6 @@ def removeDuplicates(nums):
 
     for left in range(right,len(nums)):
 
-        print(nums[left])
         if nums[left] != nums[left -1]:
             nums[right] = nums[left]
             right +=1
