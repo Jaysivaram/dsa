@@ -71,7 +71,62 @@ def insertAtPosition(head, newData, position):
     return head
 
 
+def deleteAtFront(head):
 
+    if head is None:
+
+        return head
+
+    head = head.next
+
+    return head
+
+
+def deleteAtBack(head):
+
+
+    if head is None:
+        return None
+
+    if head.next is None:
+        return None
+
+    secondLast = head
+
+    while secondLast.next.next is not None:
+        secondLast = secondLast.next
+
+    secondLast.next = None
+
+
+    return head
+
+
+def deleteAtPosition(head,position):
+
+    if head is None:
+        return None
+
+    if position == 1:
+        
+        return head.next
+
+    currentPosition = 1
+    
+    temp = head
+
+    while temp.next is not None and currentPosition < position -1:
+
+        temp = temp.next
+
+        currentPosition +=1
+
+    
+    temp.next = temp.next.next
+
+
+
+    return head
 
 
 
@@ -87,11 +142,20 @@ head.next.next = Node(40)
 
 ##### inisert new date ####
 
-head = insertionAtFront(head,10)
+# head = insertionAtFront(head,10)
 
-head = insertionAtBack(head,50)
+# head = insertionAtBack(head,50)
 
-head = insertAtPosition(head,100,5)
+# head = insertAtPosition(head,100,5)
+
+# head = deleteAtFront(head)
+
+# head = deleteAtBack(head)
+
+head = deleteAtPosition(head,1)
+
+
+
 
 traversal(head)
 
