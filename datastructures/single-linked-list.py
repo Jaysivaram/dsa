@@ -129,12 +129,95 @@ def deleteAtPosition(head,position):
     return head
 
 
+def searchKey(head,key):
+
+    if head is None:
+        return False
+
+
+    if head.data == key:
+        return True
+
+    
+    return searchKey(head.next,key)
+
+
+def reverseLinkedList(head):
+
+    nodes = []
+    temp = head
+
+    if head is None:
+        return head
+
+    if head.next is None:
+        return head
+
+    while temp is not None:
+        nodes.append(temp.data)
+        temp = temp.next
+
+    # here we can used two point as well
+    nodes = nodes[::-1]
+
+    temp = head
+    for value in nodes:
+
+        temp.data = value
+        temp = temp.next
+
+    return head
+
+
+def modifyLinkedList(head):
+
+    nodes = []
+    temp = head
+
+    if head is None:
+        return head
+
+    if head.next is None:
+        return head
+
+    while temp is not None:
+        nodes.append(temp.data)
+        temp = temp.next
+
+    left = 0
+    right = len(nodes) -1
+
+    while left < right:
+
+        values = nodes[left] - nodes[right]
+
+        nodes[left],nodes[right] = values, nodes[left]
+
+        left+=1
+        right-=1
+
+    temp = head
+    for value in nodes:
+
+        temp.data = value
+        temp = temp.next
+
+    return head
+
+
+
+
+
+
+
 
 head = Node(20)
 
 head.next = Node(30)
 
 head.next.next = Node(40)
+
+
 
 
 
@@ -152,10 +235,18 @@ head.next.next = Node(40)
 
 # head = deleteAtBack(head)
 
-head = deleteAtPosition(head,1)
+# head = deleteAtPosition(head,1)
 
+# key1 = searchKey(head,20)
 
+# key2 = searchKey(head,200)
 
+# key3 = searchKey(head,40)
+
+# print(key1,key2,key3)
+
+#head = reverseLinkedList(head) 
+head = modifyLinkedList(head)
 
 traversal(head)
 
